@@ -1,4 +1,4 @@
-# spring-dynamicdatasource
+# Mybatis的读写分离插件   spring-dynamicdatasource
 
   数据库层面大都采用读写分离技术，就是一个Master数据库，多个Slave数据库。
   
