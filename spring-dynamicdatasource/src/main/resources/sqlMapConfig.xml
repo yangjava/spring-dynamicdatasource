@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <plugins>
-    <plugin interceptor="com.spring.datasource.DynamicPlugin"></plugin>
+    <plugin interceptor="com.spring.dynamicdatasource.DynamicPlugin"></plugin>
     </plugins>
     <environments default="development">
         <environment id="development">

@@ -68,16 +68,14 @@
 	
 
 	
-	<bean id="dataSource" class="com.spring.datasource.DynamicDataSource">
-<!-- 		<property name="master" ref="master" />		
+	<bean id="dataSource" class="com.spring.dynamicdatasource.DynamicDataSource">
+ 		<property name="master" ref="master" />		
 		<property name="slaves">
 			<list>
 				<ref bean="dataSource2"/>
 			</list>		
 				
-		</property> -->
-		<property name="writeDataSource" ref="master"></property>
-		<property name="readDataSource" ref="dataSource2"></property>
+		</property>
 	</bean>
 
 	
