@@ -17,6 +17,13 @@ public class DynamicDataSource extends AbstractRoutingDataSource{
 	private DataSource master;
 	
 	private List<DataSource> slaves;
+	
+	private String dataSourceStrategy;
+		
+	private DataSourceStrategy strategy=new FirstDataSourceStrategy();
+	
+	
+
 
 	public DataSource getMaster() {
 		return master;
@@ -57,12 +64,22 @@ public class DynamicDataSource extends AbstractRoutingDataSource{
         Map<Object, Object> targetDataSources = new HashMap<Object, Object>();
         targetDataSources.put(DataSourceRW.WRITE.name(), master);
         if(slaves != null) {
+        	DataSource ds=strategy.getDataSource(slaves);
         	//去从库第一个数据库连接 
-        	//TODO 可以配置 轮训 负载等策略
-            targetDataSources.put(DataSourceRW.READ.name(), slaves.get(0));
+        	//TODO 可以配置 轮训 负载  取第一个等策略
+            targetDataSources.put(DataSourceRW.READ.name(), ds);
         }
         setTargetDataSources(targetDataSources);
         super.afterPropertiesSet();
     }
-	
+
+	public String getDataSourceStrategy() {
+		return dataSourceStrategy;
+	}
+
+	public void setDataSourceStrategy(String dataSourceStrategy) {
+		this.dataSourceStrategy = dataSourceStrategy;
+	}
+	 
+    
 }
